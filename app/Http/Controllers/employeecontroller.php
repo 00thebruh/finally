@@ -26,7 +26,7 @@ class employeecontroller extends Controller
     $request->validate([
         'fname' => 'required|max:255|string',
         'lname' => 'required|max:255|string',
-        'midname' => 'required|max:255|strig',
+        'midname' => 'required|max:255|string',
         'age' => 'required|',
         'address' => 'required|max:255|string',
         'zip' => 'required|',
