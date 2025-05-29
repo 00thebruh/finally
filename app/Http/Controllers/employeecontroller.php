@@ -27,9 +27,9 @@ class employeecontroller extends Controller
         'fname' => 'required|max:255|string',
         'lname' => 'required|max:255|string',
         'midname' => 'required|max:255|string',
-        'age' => 'required|',
+        'age' => 'required|integer',
         'address' => 'required|max:255|string',
-        'zip' => 'required|',
+        'zip' => 'required|integer',
         
     ]);
 
@@ -39,7 +39,7 @@ class employeecontroller extends Controller
 
     public function edit( int $id)
     {
-        $employees = ::find($id);
+        $employees = employee::find($id);
         return view ('employee.edit');
     }
 
@@ -55,14 +55,14 @@ class employeecontroller extends Controller
                 
             ]);
         
-            ::findOrFail($id)->($request->all());
+            employee::findOrFail($id)->update($request->all());
             return redirect ()->back()->with('status','Employee Updated Successfully!');
             }
     }
 
-    public function (int $id){
+    public function destroy(int $id){
         $employees = employee::findOrFail($id);
-        $employees->deete();
+        $employees->delete();
         return redirect ()->back()->with('status','Employee Deleted');
     }
 }
