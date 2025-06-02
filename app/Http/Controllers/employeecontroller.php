@@ -40,7 +40,7 @@ class employeecontroller extends Controller
     public function edit( int $id)
     {
         $employees = employee::find($id);
-        return view ('employee.edit');
+        return view ('employee.edit', compact('employees'));
     }
 
     public function update(Request $request, int $id) {
